@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>班長選舉民調與投票系統</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🗳️ 班長選舉民調與投票</h1>
+    
+    <!-- 分頁選單 -->
+    <div class="tabs">
+      <button onclick="showTab('poll')" class="active">即時民調與投票</button>
+      <button onclick="showTab('register')">登記候選人</button>
+      <button onclick="showTab('admin')">管理員審核</button>
+    </div>
+
+    <!-- 1. 民調與投票區 -->
+    <div id="poll-tab" class="tab-content active">
+      <h2>即時民調 (總票數: <span id="total-votes">0</span> 票)</h2>
+      <div id="candidates-list"></div>
+    </div>
+
+    <!-- 2. 登記候選人 -->
+    <div id="register-tab" class="tab-content">
+      <h2>登記為候選人 (需經過審核)</h2>
+      <form id="register-form">
+        <input type="text" id="reg-name" placeholder="姓名" required>
+        <input type="text" id="reg-slogan" placeholder="競選口號" required>
+        <textarea id="reg-platform" placeholder="政見說明" rows="4" required></textarea>
+        <button type="submit">送出登記</button>
+      </form>
+    </div>
+
+    <!-- 3. 管理員審核 -->
+    <div id="admin-tab" class="tab-content">
+      <h2>管理員審核</h2>
+      <div id="admin-login">
+        <input type="password" id="admin-pass" placeholder="請輸入管理員密碼">
+        <button onclick="loadPending()">登入審核</button>
+      </div>
+      <div id="pending-list"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
