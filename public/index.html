@@ -3,12 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>班長選舉民調與投票系統</title>
+  <title>班長選舉科技民調系統</title>
   <link rel="stylesheet" href="style.css">
+  <!-- 引入 Chart.js 動態圖表 -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+  <!-- 科技感粒子背景 -->
+  <canvas id="bg-canvas"></canvas>
+
   <div class="container">
-    <h1>🗳️ 班長選舉民調與投票</h1>
+    <h1>⚡ CLASS MONITOR ELECTION ⚡</h1>
     
     <!-- 分頁選單 -->
     <div class="tabs">
@@ -20,6 +25,12 @@
     <!-- 1. 民調與投票區 -->
     <div id="poll-tab" class="tab-content active">
       <h2>即時民調 (總票數: <span id="total-votes">0</span> 票)</h2>
+      
+      <!-- Chart.js 圖表容器 -->
+      <div class="chart-container">
+        <canvas id="pollChart"></canvas>
+      </div>
+
       <div id="candidates-list"></div>
     </div>
 
@@ -29,7 +40,17 @@
       <form id="register-form">
         <input type="text" id="reg-name" placeholder="姓名" required>
         <input type="text" id="reg-slogan" placeholder="競選口號" required>
-        <textarea id="reg-platform" placeholder="政見說明" rows="4" required></textarea>
+        <textarea id="reg-platform" placeholder="政見說明" rows="3" required></textarea>
+        
+        <label class="avatar-label">選擇候選人科技頭像：</label>
+        <div class="avatar-selector">
+          <label><input type="radio" name="avatar" value="🤖" checked> <span>🤖 機器人</span></label>
+          <label><input type="radio" name="avatar" value="⚡"> <span>⚡ 閃電人</span></label>
+          <label><input type="radio" name="avatar" value="🚀"> <span>🚀 火箭領航</span></label>
+          <label><input type="radio" name="avatar" value="🧠"> <span>🧠 智囊大腦</span></label>
+          <label><input type="radio" name="avatar" value="🛡️"> <span>🛡️ 守護盾牌</span></label>
+        </div>
+
         <button type="submit">送出登記</button>
       </form>
     </div>
