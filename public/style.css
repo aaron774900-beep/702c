@@ -1,0 +1,15 @@
+body { font-family: sans-serif; background: #f4f6f9; margin: 0; padding: 20px; }
+.container { max-width: 700px; margin: 0 auto; background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+.tabs { display: flex; gap: 10px; margin-bottom: 20px; }
+.tabs button { flex: 1; padding: 10px; border: none; background: #e2e8f0; cursor: pointer; border-radius: 6px; font-weight: bold; }
+.tabs button.active { background: #3b82f6; color: white; }
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+.card { border: 1px solid #e2e8f0; padding: 15px; border-radius: 8px; margin-bottom: 15px; }
+.progress-bar { background: #e2e8f0; height: 16px; border-radius: 8px; overflow: hidden; margin: 10px 0; }
+.progress-fill { background: #3b82f6; height: 100%; transition: width 0.4s ease; }
+form { display: flex; flex-direction: column; gap: 10px; }
+input, textarea { padding: 10px; border: 1px solid #ccc; border-radius: 6px; }
+button { cursor: pointer; padding: 10px 15px; border: none; background: #3b82f6; color: white; border-radius: 6px; }
+.btn-approve { background: #22c55e; }
+.btn-reject { background: #ef4444; }
