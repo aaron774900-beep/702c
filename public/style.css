@@ -2,9 +2,9 @@
 
 :root {
   --bg-color: #0b0f19;
-  --panel-bg: rgba(16, 24, 40, 0.85);
+  --panel-bg: rgba(16, 24, 40, 0.90);
   --panel-border: rgba(56, 189, 248, 0.3);
-  --card-bg: rgba(30, 41, 59, 0.65);
+  --card-bg: rgba(30, 41, 59, 0.85);
   --card-border: rgba(148, 163, 184, 0.18);
   --primary-cyan: #00f2fe;
   --primary-blue: #4facfe;
@@ -16,12 +16,13 @@
   --glow-cyan: 0 0 15px rgba(0, 242, 254, 0.4);
 }
 
-* { box-sizing: border-box; transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); }
+* { box-sizing: border-box; }
 
-body {
+/* 強制設定全域深色背景，絕不變白 */
+html, body {
+  background-color: #0b0f19 !important;
+  color: #f8fafc !important;
   font-family: 'Noto Sans TC', sans-serif;
-  background-color: var(--bg-color);
-  color: var(--text-main);
   margin: 0;
   padding: 40px 20px;
   min-height: 100vh;
@@ -38,6 +39,7 @@ body {
   height: 100vh;
   z-index: -1;
   pointer-events: none;
+  background-color: #0b0f19;
 }
 
 .container {
@@ -50,99 +52,3 @@ body {
   padding: 32px;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 242, 254, 0.15);
 }
-
-h1 {
-  font-family: 'Orbitron', 'Noto Sans TC', sans-serif;
-  text-align: center;
-  font-size: 1.8rem;
-  margin: 0 0 24px 0;
-  background: linear-gradient(135deg, var(--primary-cyan), var(--primary-blue), var(--neon-purple));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 30px rgba(0, 242, 254, 0.3);
-}
-
-h2 { font-size: 1.25rem; color: var(--primary-cyan); margin-bottom: 20px; }
-h2 span#total-votes { font-family: 'Orbitron', sans-serif; color: var(--neon-purple); }
-
-.tabs {
-  display: flex; gap: 12px; margin-bottom: 30px;
-  background: rgba(15, 23, 42, 0.6); padding: 6px; border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-}
-.tabs button {
-  flex: 1; padding: 12px; border: none; background: transparent;
-  color: var(--text-muted); font-weight: 700; cursor: pointer; border-radius: 8px;
-}
-.tabs button.active {
-  background: linear-gradient(135deg, rgba(0, 242, 254, 0.2), rgba(79, 172, 254, 0.2));
-  color: var(--primary-cyan); border: 1px solid var(--primary-cyan);
-  box-shadow: var(--glow-cyan);
-}
-
-.tab-content { display: none; }
-.tab-content.active { display: block; animation: fadeIn 0.4s ease-in-out; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-
-/* 圖表容器 */
-.chart-container {
-  background: rgba(15, 23, 42, 0.6);
-  border: 1px solid var(--card-border);
-  border-radius: 12px;
-  padding: 20px;
-  margin-bottom: 25px;
-  max-height: 280px;
-  display: flex;
-  justify-content: center;
-}
-
-.card {
-  background: var(--card-bg); border: 1px solid var(--card-border);
-  padding: 20px; border-radius: 12px; margin-bottom: 20px;
-}
-.card:hover { border-color: rgba(0, 242, 254, 0.4); transform: translateY(-2px); }
-
-.card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
-.card-avatar { font-size: 2rem; background: rgba(255,255,255,0.05); padding: 8px; border-radius: 50%; border: 1px solid var(--primary-cyan); }
-.card h3 { margin: 0; flex: 1; color: var(--text-main); }
-
-.progress-bar {
-  background: rgba(15, 23, 42, 0.8); height: 14px; border-radius: 7px;
-  overflow: hidden; margin: 14px 0; border: 1px solid rgba(255, 255, 255, 0.1);
-}
-.progress-fill {
-  background: linear-gradient(90deg, var(--primary-blue), var(--primary-cyan));
-  height: 100%; border-radius: 7px; box-shadow: var(--glow-cyan); transition: width 0.6s ease;
-}
-
-form { display: flex; flex-direction: column; gap: 16px; }
-input, textarea {
-  background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(148, 163, 184, 0.2);
-  color: var(--text-main); padding: 12px 16px; border-radius: 8px; font-size: 0.95rem; outline: none;
-}
-input:focus, textarea:focus { border-color: var(--primary-cyan); box-shadow: var(--glow-cyan); }
-
-/* 頭像選擇器 */
-.avatar-label { font-size: 0.9rem; color: var(--text-muted); }
-.avatar-selector { display: flex; gap: 10px; flex-wrap: wrap; }
-.avatar-selector label {
-  background: rgba(15, 23, 42, 0.8); border: 1px solid var(--card-border);
-  padding: 8px 12px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 6px;
-}
-.avatar-selector input[type="radio"] { display: none; }
-.avatar-selector label:has(input:checked) {
-  border-color: var(--primary-cyan); background: rgba(0, 242, 254, 0.15); box-shadow: var(--glow-cyan);
-}
-
-button {
-  padding: 12px 20px; border: 1px solid var(--primary-cyan);
-  background: linear-gradient(135deg, rgba(0, 242, 254, 0.15), rgba(79, 172, 254, 0.15));
-  color: var(--primary-cyan); border-radius: 8px; font-weight: 700; cursor: pointer; text-transform: uppercase;
-}
-button:hover { background: linear-gradient(135deg, var(--primary-cyan), var(--primary-blue)); color: #000; box-shadow: var(--glow-cyan); }
-.btn-approve { border-color: var(--neon-green); color: var(--neon-green); background: rgba(16, 185, 129, 0.15); }
-.btn-approve:hover { background: var(--neon-green); color: #000; }
-.btn-reject { border-color: var(--neon-red); color: var(--neon-red); background: rgba(244, 63, 94, 0.15); }
-.btn-reject:hover { background: var(--neon-red); color: #fff; }
-#admin-login { display: flex; gap: 10px; margin-bottom: 20px; }
-#admin-login input { flex: 1; }
